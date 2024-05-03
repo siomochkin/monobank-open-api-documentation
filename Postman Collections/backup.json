@@ -1,0 +1,514 @@
+{
+	"info": {
+		"_postman_id": "de5de377-4e0d-47e9-95cb-4e24bb09818a",
+		"name": "Monobank Open API (v2303)",
+		"description": "### API for Accessing Account Statements and Status / API для отримання інформації про виписки та стан особистого рахунку\n\n#### English:\n\nAPI for obtaining information about account statements and the status of personal and sole proprietorship accounts. To gain access, authorization is required in the personal account at [https://api.monobank.ua/](https://api.monobank.ua/), where a token for personal use must be obtained.\n\nIf you have questions about the API, you are invited to join the community in the Telegram group. The API is not available to clients under 16 years of age; information on children's accounts is accessible from the parent's account. If you have a service and want to centrally connect to the API to provide services to clients, you need to connect to the Service Provider API, which offers more capabilities. If client data will not be transmitted to your servers, or you are creating a service for your family, the use of the corporate API is not mandatory. Development of libraries or programs that will be used personally by clients (without client data passing through the developer's nodes) also does not require the use of the corporate API.\n\nThis allows monobank clients to authorize in your service (e.g., a financial manager) to provide information about their account status or statements. If exploitation of this API as a corporate one is detected, the bank reserves the right to impose sanctions on the company.\n\n#### Українська:\n\nAPI для отримання інформації про виписки та стан особистого рахунку та рахунків ФОП. Для надання доступу потрібно пройти авторизацію у особистому кабінеті [https://api.monobank.ua/](https://api.monobank.ua/) та отримати токен для персонального використання.\n\nЯкщо у вас є запитання щодо роботи API, запрошуємо до ком'юніті у Telegram-групі. API недоступне для клієнтів до 16 років, дані за дитячими рахунками доступні з батьківського акаунту. Якщо у вас є сервіс і ви хочете централізовано приєднатися до API для надання послуг клієнтам, потрібно підключитися до API для провайдерів послуг, що має більше можливостей. Якщо дані клієнтів не будуть надходити на ваші сервери або ви робите сервіс для своєї родини, використання корпоративного API необов'язкове. Розробка бібліотек або програм, які будуть використовувати клієнти особисто (дані клієнта не будуть проходити через вузли розробника), також не потребують використання корпоративного API.\n\nЦе надасть змогу клієнтам monobank авторизуватись у вашому сервісі (наприклад, у фінансовому менеджері) для надання інформації про стан рахунку або виписки. У разі виявлення експлуатації цього API в якості корпоративного, банк залишає за собою право накласти санкції на компанію.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Public Data",
+			"item": [
+				{
+					"name": "Exchange Rates",
+					"id": "52e0a0f5-ecc4-465b-93f2-b6a93c13f870",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"strictSSL": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n  {\n    \"currencyCodeA\": 840,\n    \"currencyCodeB\": 980,\n    \"date\": 1552392228,\n    \"rateSell\": 27,\n    \"rateBuy\": 27.2,\n    \"rateCross\": 27.1\n  }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/bank/currency",
+						"description": "### Retrieving Basic Currency Exchange Rates / Отримання базового переліку курсів валют monobank\n\n#### English:\nObtain the basic list of monobank currency exchange rates. The information is cached and updated no more frequently than once every 5 minutes.\n\n#### Українська:\nОтримати базовий перелік курсів валют monobank. Інформація кешується та оновлюється не частіше 1 разу на 5 хвилин."
+					},
+					"response": [
+						{
+							"id": "aedf2df1-44f7-44fb-87ea-2387d97acf17",
+							"name": "Exchange Rates Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n  {\n    \"currencyCodeA\": 840,\n    \"currencyCodeB\": 980,\n    \"date\": 1552392228,\n    \"rateSell\": 27,\n    \"rateBuy\": 27.2,\n    \"rateCross\": 27.1\n  }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/bank/currency"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 03 May 2024 15:26:06 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "8502"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "Server",
+									"value": "n/a"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Trace-Id",
+									"value": ""
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "[\n    {\n        \"currencyCodeA\": 840,\n        \"currencyCodeB\": 980,\n        \"date\": 1714744573,\n        \"rateBuy\": 39.3,\n        \"rateSell\": 39.8295\n    },\n    {\n        \"currencyCodeA\": 978,\n        \"currencyCodeB\": 980,\n        \"date\": 1714744573,\n        \"rateBuy\": 42.3,\n        \"rateSell\": 42.9\n    },\n    {\n        \"currencyCodeA\": 978,\n        \"currencyCodeB\": 840,\n        \"date\": 1714741573,\n        \"rateBuy\": 1.067,\n        \"rateSell\": 1.081\n    },\n    {\n        \"currencyCodeA\": 826,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749936,\n        \"rateCross\": 49.9987\n    },\n    {\n        \"currencyCodeA\": 392,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749904,\n        \"rateCross\": 0.2601\n    },\n    {\n        \"currencyCodeA\": 756,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749914,\n        \"rateCross\": 43.8118\n    },\n    {\n        \"currencyCodeA\": 156,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749906,\n        \"rateCross\": 5.5053\n    },\n    {\n        \"currencyCodeA\": 784,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749931,\n        \"rateCross\": 10.8454\n    },\n    {\n        \"currencyCodeA\": 971,\n        \"currencyCodeB\": 980,\n        \"date\": 1703852583,\n        \"rateCross\": 0.5417\n    },\n    {\n        \"currencyCodeA\": 8,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749882,\n        \"rateCross\": 0.4262\n    },\n    {\n        \"currencyCodeA\": 51,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749826,\n        \"rateCross\": 0.1029\n    },\n    {\n        \"currencyCodeA\": 973,\n        \"currencyCodeB\": 980,\n        \"date\": 1712422023,\n        \"rateCross\": 0.0472\n    },\n    {\n        \"currencyCodeA\": 32,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749577,\n        \"rateCross\": 0.0401\n    },\n    {\n        \"currencyCodeA\": 36,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749035,\n        \"rateCross\": 26.0888\n    },\n    {\n        \"currencyCodeA\": 944,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749940,\n        \"rateCross\": 23.4219\n    },\n    {\n        \"currencyCodeA\": 50,\n        \"currencyCodeB\": 980,\n        \"date\": 1714744975,\n        \"rateCross\": 0.364\n    },\n    {\n        \"currencyCodeA\": 975,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749928,\n        \"rateCross\": 21.8403\n    },\n    {\n        \"currencyCodeA\": 48,\n        \"currencyCodeB\": 980,\n        \"date\": 1714745599,\n        \"rateCross\": 105.9067\n    },\n    {\n        \"currencyCodeA\": 108,\n        \"currencyCodeB\": 980,\n        \"date\": 1703366443,\n        \"rateCross\": 0.0133\n    },\n    {\n        \"currencyCodeA\": 96,\n        \"currencyCodeB\": 980,\n        \"date\": 1713788005,\n        \"rateCross\": 29.409\n    },\n    {\n        \"currencyCodeA\": 68,\n        \"currencyCodeB\": 980,\n        \"date\": 1714450267,\n        \"rateCross\": 5.8068\n    },\n    {\n        \"currencyCodeA\": 986,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749839,\n        \"rateCross\": 7.8133\n    },\n    {\n        \"currencyCodeA\": 72,\n        \"currencyCodeB\": 980,\n        \"date\": 1714502255,\n        \"rateCross\": 2.8132\n    },\n    {\n        \"currencyCodeA\": 933,\n        \"currencyCodeB\": 980,\n        \"date\": 1714740699,\n        \"rateCross\": 12.3093\n    },\n    {\n        \"currencyCodeA\": 124,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749925,\n        \"rateCross\": 29.1467\n    },\n    {\n        \"currencyCodeA\": 976,\n        \"currencyCodeB\": 980,\n        \"date\": 1709384289,\n        \"rateCross\": 0.0141\n    },\n    {\n        \"currencyCodeA\": 152,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749811,\n        \"rateCross\": 0.0416\n    },\n    {\n        \"currencyCodeA\": 170,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749118,\n        \"rateCross\": 0.0102\n    },\n    {\n        \"currencyCodeA\": 188,\n        \"currencyCodeB\": 980,\n        \"date\": 1714702617,\n        \"rateCross\": 0.078\n    },\n    {\n        \"currencyCodeA\": 192,\n        \"currencyCodeB\": 980,\n        \"date\": 1687102850,\n        \"rateCross\": 1.5599\n    },\n    {\n        \"currencyCodeA\": 203,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749942,\n        \"rateCross\": 1.7139\n    },\n    {\n        \"currencyCodeA\": 262,\n        \"currencyCodeB\": 980,\n        \"date\": 1714577700,\n        \"rateCross\": 0.2242\n    },\n    {\n        \"currencyCodeA\": 208,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749935,\n        \"rateCross\": 5.7353\n    },\n    {\n        \"currencyCodeA\": 12,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749922,\n        \"rateCross\": 0.2959\n    },\n    {\n        \"currencyCodeA\": 818,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749864,\n        \"rateCross\": 0.8318\n    },\n    {\n        \"currencyCodeA\": 230,\n        \"currencyCodeB\": 980,\n        \"date\": 1714636379,\n        \"rateCross\": 0.6997\n    },\n    {\n        \"currencyCodeA\": 981,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749937,\n        \"rateCross\": 15.024\n    },\n    {\n        \"currencyCodeA\": 936,\n        \"currencyCodeB\": 980,\n        \"date\": 1714745075,\n        \"rateCross\": 2.9114\n    },\n    {\n        \"currencyCodeA\": 270,\n        \"currencyCodeB\": 980,\n        \"date\": 1714642585,\n        \"rateCross\": 0.6228\n    },\n    {\n        \"currencyCodeA\": 324,\n        \"currencyCodeB\": 980,\n        \"date\": 1712141460,\n        \"rateCross\": 0.0046\n    },\n    {\n        \"currencyCodeA\": 344,\n        \"currencyCodeB\": 980,\n        \"date\": 1714748973,\n        \"rateCross\": 5.0983\n    },\n    {\n        \"currencyCodeA\": 191,\n        \"currencyCodeB\": 980,\n        \"date\": 1680625280,\n        \"rateCross\": 5.4258\n    },\n    {\n        \"currencyCodeA\": 348,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749941,\n        \"rateCross\": 0.1098\n    },\n    {\n        \"currencyCodeA\": 360,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749874,\n        \"rateCross\": 0.0024\n    },\n    {\n        \"currencyCodeA\": 376,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749705,\n        \"rateCross\": 10.7451\n    },\n    {\n        \"currencyCodeA\": 356,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749765,\n        \"rateCross\": 0.4775\n    },\n    {\n        \"currencyCodeA\": 368,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749681,\n        \"rateCross\": 0.0304\n    },\n    {\n        \"currencyCodeA\": 352,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749243,\n        \"rateCross\": 0.2838\n    },\n    {\n        \"currencyCodeA\": 400,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749826,\n        \"rateCross\": 56.2728\n    },\n    {\n        \"currencyCodeA\": 404,\n        \"currencyCodeB\": 980,\n        \"date\": 1714744600,\n        \"rateCross\": 0.2961\n    },\n    {\n        \"currencyCodeA\": 417,\n        \"currencyCodeB\": 980,\n        \"date\": 1714748716,\n        \"rateCross\": 0.4491\n    },\n    {\n        \"currencyCodeA\": 116,\n        \"currencyCodeB\": 980,\n        \"date\": 1714748262,\n        \"rateCross\": 0.0098\n    },\n    {\n        \"currencyCodeA\": 410,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749279,\n        \"rateCross\": 0.029\n    },\n    {\n        \"currencyCodeA\": 414,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749783,\n        \"rateCross\": 129.5643\n    },\n    {\n        \"currencyCodeA\": 398,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749779,\n        \"rateCross\": 0.0898\n    },\n    {\n        \"currencyCodeA\": 418,\n        \"currencyCodeB\": 980,\n        \"date\": 1714741455,\n        \"rateCross\": 0.0018\n    },\n    {\n        \"currencyCodeA\": 422,\n        \"currencyCodeB\": 980,\n        \"date\": 1714262300,\n        \"rateCross\": 0.0004\n    },\n    {\n        \"currencyCodeA\": 144,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749673,\n        \"rateCross\": 0.1342\n    },\n    {\n        \"currencyCodeA\": 434,\n        \"currencyCodeB\": 980,\n        \"date\": 1710088604,\n        \"rateCross\": 8.0008\n    },\n    {\n        \"currencyCodeA\": 504,\n        \"currencyCodeB\": 980,\n        \"date\": 1714740814,\n        \"rateCross\": 3.9497\n    },\n    {\n        \"currencyCodeA\": 498,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749911,\n        \"rateCross\": 2.2696\n    },\n    {\n        \"currencyCodeA\": 969,\n        \"currencyCodeB\": 980,\n        \"date\": 1714742272,\n        \"rateCross\": 0.009\n    },\n    {\n        \"currencyCodeA\": 807,\n        \"currencyCodeB\": 980,\n        \"date\": 1714748223,\n        \"rateCross\": 0.6932\n    },\n    {\n        \"currencyCodeA\": 496,\n        \"currencyCodeB\": 980,\n        \"date\": 1714663903,\n        \"rateCross\": 0.0118\n    },\n    {\n        \"currencyCodeA\": 480,\n        \"currencyCodeB\": 980,\n        \"date\": 1714746934,\n        \"rateCross\": 0.8565\n    },\n    {\n        \"currencyCodeA\": 454,\n        \"currencyCodeB\": 980,\n        \"date\": 1678369785,\n        \"rateCross\": 0.0368\n    },\n    {\n        \"currencyCodeA\": 484,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749769,\n        \"rateCross\": 2.3571\n    },\n    {\n        \"currencyCodeA\": 458,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749666,\n        \"rateCross\": 8.3852\n    },\n    {\n        \"currencyCodeA\": 943,\n        \"currencyCodeB\": 980,\n        \"date\": 1714745392,\n        \"rateCross\": 0.6293\n    },\n    {\n        \"currencyCodeA\": 516,\n        \"currencyCodeB\": 980,\n        \"date\": 1714748119,\n        \"rateCross\": 2.1508\n    },\n    {\n        \"currencyCodeA\": 566,\n        \"currencyCodeB\": 980,\n        \"date\": 1714680125,\n        \"rateCross\": 0.0284\n    },\n    {\n        \"currencyCodeA\": 558,\n        \"currencyCodeB\": 980,\n        \"date\": 1714687524,\n        \"rateCross\": 1.0891\n    },\n    {\n        \"currencyCodeA\": 578,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749861,\n        \"rateCross\": 3.6197\n    },\n    {\n        \"currencyCodeA\": 524,\n        \"currencyCodeB\": 980,\n        \"date\": 1714746934,\n        \"rateCross\": 0.2984\n    },\n    {\n        \"currencyCodeA\": 554,\n        \"currencyCodeB\": 980,\n        \"date\": 1714747455,\n        \"rateCross\": 23.7759\n    },\n    {\n        \"currencyCodeA\": 512,\n        \"currencyCodeB\": 980,\n        \"date\": 1714745628,\n        \"rateCross\": 103.5432\n    },\n    {\n        \"currencyCodeA\": 604,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749513,\n        \"rateCross\": 10.6148\n    },\n    {\n        \"currencyCodeA\": 608,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749186,\n        \"rateCross\": 0.6929\n    },\n    {\n        \"currencyCodeA\": 586,\n        \"currencyCodeB\": 980,\n        \"date\": 1714737364,\n        \"rateCross\": 0.1433\n    },\n    {\n        \"currencyCodeA\": 985,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749945,\n        \"rateCross\": 9.9114\n    },\n    {\n        \"currencyCodeA\": 600,\n        \"currencyCodeB\": 980,\n        \"date\": 1714740328,\n        \"rateCross\": 0.0053\n    },\n    {\n        \"currencyCodeA\": 634,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749743,\n        \"rateCross\": 10.9417\n    },\n    {\n        \"currencyCodeA\": 946,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749945,\n        \"rateCross\": 8.5934\n    },\n    {\n        \"currencyCodeA\": 941,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749929,\n        \"rateCross\": 0.3648\n    },\n    {\n        \"currencyCodeA\": 682,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749568,\n        \"rateCross\": 10.6213\n    },\n    {\n        \"currencyCodeA\": 690,\n        \"currencyCodeB\": 980,\n        \"date\": 1714747645,\n        \"rateCross\": 2.7907\n    },\n    {\n        \"currencyCodeA\": 938,\n        \"currencyCodeB\": 980,\n        \"date\": 1680961561,\n        \"rateCross\": 0.0627\n    },\n    {\n        \"currencyCodeA\": 752,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749944,\n        \"rateCross\": 3.6593\n    },\n    {\n        \"currencyCodeA\": 702,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749432,\n        \"rateCross\": 29.3711\n    },\n    {\n        \"currencyCodeA\": 694,\n        \"currencyCodeB\": 980,\n        \"date\": 1664217991,\n        \"rateCross\": 0.0024\n    },\n    {\n        \"currencyCodeA\": 706,\n        \"currencyCodeB\": 980,\n        \"date\": 1683386099,\n        \"rateCross\": 0.0659\n    },\n    {\n        \"currencyCodeA\": 968,\n        \"currencyCodeB\": 980,\n        \"date\": 1711486501,\n        \"rateCross\": 1.1275\n    },\n    {\n        \"currencyCodeA\": 748,\n        \"currencyCodeB\": 980,\n        \"date\": 1706459505,\n        \"rateCross\": 2.0391\n    },\n    {\n        \"currencyCodeA\": 764,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749919,\n        \"rateCross\": 1.0832\n    },\n    {\n        \"currencyCodeA\": 972,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749512,\n        \"rateCross\": 3.6478\n    },\n    {\n        \"currencyCodeA\": 788,\n        \"currencyCodeB\": 980,\n        \"date\": 1714748527,\n        \"rateCross\": 12.7016\n    },\n    {\n        \"currencyCodeA\": 949,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749926,\n        \"rateCross\": 1.2384\n    },\n    {\n        \"currencyCodeA\": 901,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749083,\n        \"rateCross\": 1.2277\n    },\n    {\n        \"currencyCodeA\": 834,\n        \"currencyCodeB\": 980,\n        \"date\": 1714744847,\n        \"rateCross\": 0.0155\n    },\n    {\n        \"currencyCodeA\": 800,\n        \"currencyCodeB\": 980,\n        \"date\": 1714745582,\n        \"rateCross\": 0.0105\n    },\n    {\n        \"currencyCodeA\": 858,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749321,\n        \"rateCross\": 1.0423\n    },\n    {\n        \"currencyCodeA\": 860,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749685,\n        \"rateCross\": 0.0031\n    },\n    {\n        \"currencyCodeA\": 704,\n        \"currencyCodeB\": 980,\n        \"date\": 1714749929,\n        \"rateCross\": 0.0015\n    },\n    {\n        \"currencyCodeA\": 950,\n        \"currencyCodeB\": 980,\n        \"date\": 1714653317,\n        \"rateCross\": 0.0649\n    },\n    {\n        \"currencyCodeA\": 952,\n        \"currencyCodeB\": 980,\n        \"date\": 1714665465,\n        \"rateCross\": 0.0651\n    },\n    {\n        \"currencyCodeA\": 886,\n        \"currencyCodeB\": 980,\n        \"date\": 1702176265,\n        \"rateCross\": 0.1496\n    },\n    {\n        \"currencyCodeA\": 710,\n        \"currencyCodeB\": 980,\n        \"date\": 1714748649,\n        \"rateCross\": 2.1545\n    }\n]"
+						}
+					]
+				}
+			],
+			"id": "9107ca03-8836-4393-ba01-60c916b43fac",
+			"description": "### General Information Provided Without Authorization / Загальна інформація, що надається без авторизації\n\n#### English:\nGeneral information that is provided without the need for authorization.\n\n#### Українська:\nЗагальна інформація, що надається без потреби в авторизації.",
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "bcaaa6b9-6560-4bb5-8285-b04e411640ca",
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e31510fd-8845-4fe6-a6d3-c307a6670642",
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Client Data",
+			"item": [
+				{
+					"name": "Client Info",
+					"id": "58f63934-8ec6-4196-be08-4ebe0519f795",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "{{X-Token}}",
+								"description": "Personal Token for API Access",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/personal/client-info",
+						"description": "### Client Information Retrieval / Отримання інформації про клієнта\n\n#### English:\n\nRetrieve information about the client, including a list of their accounts and banks. The function usage is limited to no more than once every 60 seconds.\n\n#### Українська:\n\nОтримання інформації про клієнта та переліку його рахунків і банок. Обмеження на використання функції — не частіше ніж 1 раз на 60 секунд."
+					},
+					"response": [
+						{
+							"id": "5508050e-0225-4f5c-a2dc-9eed0938f0a8",
+							"name": "Client Info Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Token",
+										"value": "{{X-Token}}",
+										"description": "Personal Token for API Access",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/personal/client-info"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 03 May 2024 23:05:08 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1720"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Server",
+									"value": "n/a"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Trace-Id",
+									"value": ""
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n\"clientId\": \"3MSaMMtczs\",\n\"name\": \"John Doe\",\n\"webHookUrl\": \"https://example.com/some_random_data_for_security\",\n\"permissions\": \"psfj\",\n\"accounts\": [\n{}\n],\n\"jars\": [\n{}\n]\n}"
+						}
+					]
+				},
+				{
+					"name": "Transactions Webhook Subscription",
+					"id": "56c54e36-8377-464c-87d4-7b0082ee0fc6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "{{X-Token}}",
+								"description": "Personal Token for API Access",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"webHookUrl\": \"https://n8n.somochkin.com/webhook-test/1b7c2b9a-1422-4a94-93d1-7293077e4dff\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{BASE_URL}}/personal/webhook",
+						"description": "### User URL Setup / Встановлення URL користувача:\n\n#### English:\n\nTo confirm the validity of the provided address, a GET request is sent to it. The server must respond strictly with an HTTP status code of 200, and no other. If the validation is successful, POST requests containing events begin to be sent to the specified address.\n\nEvents are sent in the following format: POST request to the specified address in the format `{type:\"StatementItem\", data:{account:\"...\", statementItem:{#StatementItem}}}`. If the user's service does not respond within 5 seconds to the command, the service will retry after 60 and 600 seconds. If no response is received on the third attempt, the function will be disabled. The server's response must strictly contain an HTTP status code of 200.\n\n#### Українська:\n\nДля підтвердження коректності наданої адреси, на неї надсилається GET-запит. Сервер має відповісти строго HTTP статус-кодом 200, і ніяким іншим. Якщо валідацію пройдено, на задану адресу починають надсилатися POST запити з подіями.\n\nПодії надсилаються у наступному вигляді: POST запит на задану адресу у форматі `{type:\"StatementItem\", data:{account:\"...\", statementItem:{#StatementItem}}}`. Якщо сервіс користувача не відповість протягом 5с на команду, сервіс повторить спробу ще через 60 та 600 секунд. Якщо на третю спробу відповідь отримана не буде, функція буде вимкнута. Відповідь сервера має строго містити HTTP статус-код 200."
+					},
+					"response": [
+						{
+							"id": "e87d915b-4580-4f2f-9faf-37a890116df2",
+							"name": "Transactions Webhook Subscription Example",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Token",
+										"value": "{{X-Token}}",
+										"description": "Personal Token for API Access",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"webHookUrl\": \"https://n8n.somochkin.com/webhook/1b7c2b9a-1422-4a94-93d1-7293077e4dff\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{BASE_URL}}/personal/webhook"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 03 May 2024 23:08:14 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "15"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Server",
+									"value": "n/a"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Trace-Id",
+									"value": ""
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"ok\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Statement",
+					"id": "a9b6499b-7877-4f34-8fc8-84112f6d0ade",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Token",
+								"value": "{{X-Token}}",
+								"type": "text",
+								"description": "Personal Token for API Access"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/personal/statement/:account/:from/:to",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"personal",
+								"statement",
+								":account",
+								":from",
+								":to"
+							],
+							"variable": [
+								{
+									"key": "account",
+									"value": "BZqDIxP5BAQvIyzeohCxlw",
+									"description": "Ідентифікатор рахунку або банки з переліків Statement list або 0 - дефолтний рахунок.\n-\nAccount or bank identifier from the Statement list or 0 - default account."
+								},
+								{
+									"key": "from",
+									"value": "1714075809",
+									"description": "Example: 1546304461\nПочаток часу виписки.\n-\nExample: 1546304461\nThe start of the discharge time."
+								},
+								{
+									"key": "to",
+									"value": "1714029009",
+									"description": "Example: 1546306461\nОстанній час виписки (якщо відсутній, буде використовуватись поточний час).\n-\nExample: 1546306461\nThe last time of the statement (if not available, the current time will be used)."
+								}
+							]
+						},
+						"description": "### Retrieving Transaction Statements / Отримання виписки за час\n\n#### English:\nRetrieve transaction statements for a period from `{from}` to `{to}` in Unix time seconds. The maximum period for which a statement can be obtained is 31 days + 1 hour (2,682,000 seconds).\n\nThe function usage is limited to no more than once every 60 seconds.\n\nIt returns the last 500 transactions, meaning from the time `{to}` to `{from}`. If the number of transactions equals 500, another request should be made by reducing the `{to}` time to the time of the last transaction in the response. If the number of transactions equals 500 again, continue making requests until the number of transactions is less than 500. Consequently, if the number of transactions is less than 500, all transactions for the specified period have been retrieved.\n\n#### Українська:\nОтримання виписки за час від `{from}` до `{to}` часу в секундах в форматі Unix time. Максимальний час, за який можливо отримати виписку — 31 доба + 1 година (2682000 секунд).\n\nОбмеження на використання функції — не частіше ніж 1 раз на 60 секунд.\n\nПовертає 500 транзакцій з кінця, тобто від часу `{to}` до `{from}`. Якщо кількість транзакцій = 500, потрібно зробити ще один запит, зменшивши час `{to}` до часу останнього платежу, з відповіді. Якщо знову кількість транзакцій = 500, то виконуєте запити до того часу, поки кількість транзакцій не буде < 500. Відповідно, якщо кількість транзакцій < 500, то вже отримано всі платежі за вказаний період."
+					},
+					"response": [
+						{
+							"id": "8d3bb0d2-c39d-4767-899e-e149b1fa5a3b",
+							"name": "Statement Example",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Token",
+										"value": "{{X-Token}}",
+										"type": "text",
+										"description": "Personal Token for API Access"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/personal/statement/:account/:from/:to",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"personal",
+										"statement",
+										":account",
+										":from",
+										":to"
+									],
+									"variable": [
+										{
+											"key": "account",
+											"value": "BZqDIxP5BAQvIyzeohCxlw",
+											"description": "Ідентифікатор рахунку або банки з переліків Statement list або 0 - дефолтний рахунок.\n-\nAccount or bank identifier from the Statement list or 0 - default account."
+										},
+										{
+											"key": "from",
+											"value": "1714029009",
+											"description": "Example: 1546304461\nПочаток часу виписки.\n-\nExample: 1546304461\nThe start of the discharge time."
+										},
+										{
+											"key": "to",
+											"value": "1714047009"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 03 May 2024 23:11:39 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "623"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Server",
+									"value": "n/a"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Trace-Id",
+									"value": ""
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "[\n    {\n        \"id\": \"6m127z233CsadzcpDQ\",\n        \"time\": 1714037498,\n        \"description\": \"Товариство з обмеженою відповідальністю \\\"LLC DEMO\\\"\",\n        \"mcc\": 4829,\n        \"originalMcc\": 4829,\n        \"amount\": -1904274,\n        \"operationAmount\": -1904274,\n        \"currencyCode\": 980,\n        \"commissionRate\": 9474,\n        \"cashbackAmount\": 0,\n        \"balance\": 67041,\n        \"hold\": false,\n        \"receiptId\": \"XXXX-XXXX-XXXX-XXXX\"\n    }\n]"
+						}
+					]
+				}
+			],
+			"id": "c5876559-6ccf-48f9-a0c6-08c67660c3f7",
+			"description": "### Access Token Required Information / Інформація, що надається тільки за наявності токена доступу\n\n#### English:\nThe information is provided only if an access token is available, which the client can obtain in their personal account at https://api.monobank.ua/.\n\n#### Українська:\nІнформація, що надається тільки за наявності токена доступу, який клієнт може отримати в особистому кабінеті https://api.monobank.ua/."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "8f728ee6-c101-480d-a8cb-c4e242829009",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2a6b677d-2643-4072-8b4d-eaad1a86a6fd",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "https://api.monobank.ua",
+			"type": "string"
+		},
+		{
+			"key": "X-Token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
