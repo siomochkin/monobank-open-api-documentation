@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  title: Monobank Open API
+  version: v2303
+  description: |
+    API for Accessing Account Statements and Status.
+    API для отримання інформації про виписки та стан особистого рахунку.
+
+servers:
+  - url: https://api.monobank.ua
+
+paths:
+  /bank/currency:
+    get:
+      summary: Exchange Rates
+      description: |
+        ### Retrieving Basic Currency Exchange Rates
+        Отримання базового переліку курсів валют monobank.
+      responses:
+        '200':
+          description: An array of exchange rates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    currencyCodeA:
+                      type: integer
+                    currencyCodeB:
+                      type: integer
+                    date:
+                      type: integer
+                    rateSell:
+                      type: number
+                    rateBuy:
+                      type: number
+                    rateCross:
+                      type: number
+
+  /personal/client-info:
+    get:
+      summary: Client Info
+      description: |
+        ### Client Information Retrieval
+        Отримання інформації про клієнта.
+      parameters:
+        - name: X-Token
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Personal Token for API Access
+      responses:
+        '200':
+          description: Client information response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  clientId:
+                    type: string
+                  name:
+                    type: string
+                  webHookUrl:
+                    type: string
+                  permissions:
+                    type: string
+                  accounts:
+                    type: array
+                    items:
+                      type: object
+                  jars:
+                    type: array
+                    items:
+                      type: object
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Token
