@@ -1,12 +1,22 @@
 # Monobank Open API (v2303)
 
+## Disclaimer
+This API documentation is not affiliated with Monobank. It was created independently to contribute to the Monobank development community. The author of this documentation is not affiliated with Monobank in any way and just wants to contribute, making API more accessible and convinient for everyone.
+
+## Original API Documentation from the Developer
+Access the official Monobank API documentation here: [Monobank API Documentation](https://api.monobank.ua/docs/index.html)
+
+## Postman Collection
+https://documenter.getpostman.com/view/25272928/2sA3JGe3W4
+
 ## Overview
-Monobank Open API provides access to account statements and the status of personal and sole proprietorship accounts. This API is designed to facilitate the integration of Monobank's banking services into your applications, providing capabilities such as retrieving exchange rates, client information, and transaction statements.
+Monobank Open API provides access to account statements and the status of personal and sole proprietorship accounts. This API is designed to facilitate the integration of Monobank's banking services into your applications, providing capabilities such as retrieving exchange rates, client information, transaction statements, and setting up webhook subscriptions. This API is not available to clients under 16 years of age. Information on children's accounts is accessible from the parent's account. The bank reserves the right to impose sanctions if misuse of the API is detected.
 
 ### Features
 - **Exchange Rates**: Get the latest currency exchange rates.
 - **Client Information**: Retrieve detailed information about clients, including account and bank details.
 - **Transaction Statements**: Access detailed transaction history for specified periods.
+- **Webhook Subscriptions**: Set up webhooks to receive real-time transaction notifications.
 
 ## Prerequisites
 To use this API, you need to:
@@ -47,19 +57,17 @@ To get started with the Monobank Open API, follow these steps:
   curl -X GET "{{BASE_URL}}/personal/statement/{account}/{from}/{to}" -H "X-Token: your_access_token"
   ```
 
+### Webhook Subscription
+- **Endpoint**: `POST /personal/webhook`
+- **Required**: `X-Token` header for authentication.
+- **Description**: Subscribes a webhook URL to receive real-time notifications about transactions. The server must respond with an HTTP status code of 200 to confirm the validity of the provided address.
+- **Example Request**:
+  ```bash
+  curl -X POST "{{BASE_URL}}/personal/webhook" \
+       -H "X-Token: your_access_token" \
+       -H "Content-Type: application/json" \
+       -d '{"webHookUrl": "https://yourdomain.com/webhook"}'
+  ```
+
 ## Support and Community
-If you have questions about the API or encounter any issues, you are encouraged to join our community on Telegram. Additionally, the API documentation is available for more detailed information and troubleshooting tips.
-
-## Contributing
-We welcome contributions to improve the API documentation or client libraries. Please feel free to fork the repository, make changes, and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
-
-## Disclaimer
-This API is not available to clients under 16 years of age. Information on children's accounts is accessible from the parent's account. The bank reserves the right to impose sanctions if misuse of the API is detected.
-
-### Notes:
-- **BASE_URL** and other placeholders should be replaced with actual values or variables defined in your environment setup.
-- The examples provided use `curl` for API calls, which is standard for command-line HTTP requests. You may need to adjust these examples based on your specific implementation needs or programming environment.
-- Ensure that any endpoints, parameters, or details specific to your version of the API are updated accordingly in the README.
+If you have questions about the API or encounter any issues, you are encouraged to join the Monobank community on Telegram. Additionally, the API documentation is available for more detailed information and troubleshooting tips.
