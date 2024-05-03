@@ -1,24 +1,18 @@
 openapi: 3.0.0
 info:
-  title: Monobank Open API
-  version: v2303
-  description: |
-    API for Accessing Account Statements and Status.
-    API для отримання інформації про виписки та стан особистого рахунку.
-
+  title: Monobank Open API (v2303)
+  version: 2303
+  description: API for Accessing Account Statements and Status
 servers:
   - url: https://api.monobank.ua
-
 paths:
   /bank/currency:
     get:
       summary: Exchange Rates
-      description: |
-        ### Retrieving Basic Currency Exchange Rates
-        Отримання базового переліку курсів валют monobank.
+      operationId: getExchangeRates
       responses:
         '200':
-          description: An array of exchange rates
+          description: OK
           content:
             application/json:
               schema:
@@ -42,19 +36,12 @@ paths:
   /personal/client-info:
     get:
       summary: Client Info
-      description: |
-        ### Client Information Retrieval
-        Отримання інформації про клієнта.
-      parameters:
-        - name: X-Token
-          in: header
-          required: true
-          schema:
-            type: string
-          description: Personal Token for API Access
+      operationId: getClientInfo
+      security:
+        - ApiKeyAuth: []
       responses:
         '200':
-          description: Client information response
+          description: OK
           content:
             application/json:
               schema:
@@ -76,6 +63,90 @@ paths:
                     type: array
                     items:
                       type: object
+
+  /personal/webhook:
+    post:
+      summary: Transactions Webhook Subscription
+      operationId: setWebhook
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                webHookUrl:
+                  type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+
+  /personal/statement/{account}/{from}/{to}:
+    get:
+      summary: Statement
+      operationId: getStatement
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - name: account
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: from
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: to
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    time:
+                      type: integer
+                    description:
+                      type: string
+                    mcc:
+                      type: integer
+                    originalMcc:
+                      type: integer
+                    amount:
+                      type: integer
+                    operationAmount:
+                      type: integer
+                    currencyCode:
+                      type: integer
+                    commissionRate:
+                      type: integer
+                    cashbackAmount:
+                      type: integer
+                    balance:
+                      type: integer
+                    hold:
+                      type: boolean
+                    receiptId:
+                      type: string
 
 components:
   securitySchemes:
