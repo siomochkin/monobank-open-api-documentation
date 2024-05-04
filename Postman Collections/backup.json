@@ -361,22 +361,21 @@
 							"variable": [
 								{
 									"key": "account",
-									"value": "BZqDIxP5BAQvIyzeohCxlw",
+									"value": "",
 									"description": "Ідентифікатор рахунку або банки з переліків Statement list або 0 - дефолтний рахунок.\n-\nAccount or bank identifier from the Statement list or 0 - default account."
 								},
 								{
 									"key": "from",
-									"value": "1714075809",
+									"value": "",
 									"description": "Example: 1546304461\nПочаток часу виписки.\n-\nExample: 1546304461\nThe start of the discharge time."
 								},
 								{
 									"key": "to",
-									"value": "1714029009",
-									"description": "Example: 1546306461\nОстанній час виписки (якщо відсутній, буде використовуватись поточний час).\n-\nExample: 1546306461\nThe last time of the statement (if not available, the current time will be used)."
+									"value": ""
 								}
 							]
 						},
-						"description": "### Retrieving Transaction Statements / Отримання виписки за час\n\n#### English:\nRetrieve transaction statements for a period from `{from}` to `{to}` in Unix time seconds. The maximum period for which a statement can be obtained is 31 days + 1 hour (2,682,000 seconds).\n\nThe function usage is limited to no more than once every 60 seconds.\n\nIt returns the last 500 transactions, meaning from the time `{to}` to `{from}`. If the number of transactions equals 500, another request should be made by reducing the `{to}` time to the time of the last transaction in the response. If the number of transactions equals 500 again, continue making requests until the number of transactions is less than 500. Consequently, if the number of transactions is less than 500, all transactions for the specified period have been retrieved.\n\n#### Українська:\nОтримання виписки за час від `{from}` до `{to}` часу в секундах в форматі Unix time. Максимальний час, за який можливо отримати виписку — 31 доба + 1 година (2682000 секунд).\n\nОбмеження на використання функції — не частіше ніж 1 раз на 60 секунд.\n\nПовертає 500 транзакцій з кінця, тобто від часу `{to}` до `{from}`. Якщо кількість транзакцій = 500, потрібно зробити ще один запит, зменшивши час `{to}` до часу останнього платежу, з відповіді. Якщо знову кількість транзакцій = 500, то виконуєте запити до того часу, поки кількість транзакцій не буде < 500. Відповідно, якщо кількість транзакцій < 500, то вже отримано всі платежі за вказаний період."
+						"description": "### Retrieving Transaction Statements / Отримання виписки за час\n\n#### English:\n\nRetrieve transaction statements for a period from `{from}` to `{to}` in Unix time seconds. The maximum period for which a statement can be obtained is 31 days + 1 hour (2,682,000 seconds).\n\nThe function usage is limited to no more than once every 60 seconds.\n\nIt returns the last 500 transactions, meaning from the time `{to}` to `{from}`. If the number of transactions equals 500, another request should be made by reducing the `{to}` time to the time of the last transaction in the response. If the number of transactions equals 500 again, continue making requests until the number of transactions is less than 500. Consequently, if the number of transactions is less than 500, all transactions for the specified period have been retrieved.\n\n#### Українська:\n\nОтримання виписки за час від `{from}` до `{to}` часу в секундах в форматі Unix time. Максимальний час, за який можливо отримати виписку — 31 доба + 1 година (2682000 секунд).\n\nОбмеження на використання функції — не частіше ніж 1 раз на 60 секунд.\n\nПовертає 500 транзакцій з кінця, тобто від часу `{to}` до `{from}`. Якщо кількість транзакцій = 500, потрібно зробити ще один запит, зменшивши час `{to}` до часу останнього платежу, з відповіді. Якщо знову кількість транзакцій = 500, то виконуєте запити до того часу, поки кількість транзакцій не буде < 500. Відповідно, якщо кількість транзакцій < 500, то вже отримано всі платежі за вказаний період."
 					},
 					"response": [
 						{
