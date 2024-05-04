@@ -6,7 +6,7 @@ This API documentation is not affiliated with Monobank. It was created independe
 ## Original API Documentation from the Developer
 Access the official Monobank API documentation here: [Monobank API Documentation](https://api.monobank.ua/docs/index.html)
 
-## Postman Collection
+## Postman Collection (Recommended)
 https://documenter.getpostman.com/view/25272928/2sA3JGe3W4
 
 ## Overview
