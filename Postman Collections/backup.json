@@ -247,7 +247,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\"webHookUrl\": \"https://n8n.somochkin.com/webhook-test/1b7c2b9a-1422-4a94-93d1-7293077e4dff\"\n}",
+							"raw": "{\n\"webHookUrl\": \"https://your.domain/webhook_url\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -416,17 +416,18 @@
 									"variable": [
 										{
 											"key": "account",
-											"value": "BZqDIxP5BAQvIyzeohCxlw",
+											"value": "",
 											"description": "Ідентифікатор рахунку або банки з переліків Statement list або 0 - дефолтний рахунок.\n-\nAccount or bank identifier from the Statement list or 0 - default account."
 										},
 										{
 											"key": "from",
-											"value": "1714029009",
+											"value": "",
 											"description": "Example: 1546304461\nПочаток часу виписки.\n-\nExample: 1546304461\nThe start of the discharge time."
 										},
 										{
 											"key": "to",
-											"value": "1714047009"
+											"value": "",
+											"description": "Example: 1546304461\nПочаток часу виписки.\n-\nExample: 1546304461\nThe start of the discharge time."
 										}
 									]
 								}
