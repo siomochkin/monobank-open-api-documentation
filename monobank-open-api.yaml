@@ -71,6 +71,7 @@ paths:
       security:
         - ApiKeyAuth: []
       requestBody:
+        required: true
         content:
           application/json:
             schema:
@@ -78,6 +79,7 @@ paths:
               properties:
                 webHookUrl:
                   type: string
+                  description: URL to receive webhook notifications.
       responses:
         '200':
           description: OK
@@ -88,6 +90,7 @@ paths:
                 properties:
                   status:
                     type: string
+                    description: Response status after setting webhook.
 
   /personal/statement/{account}/{from}/{to}:
     get:
@@ -101,16 +104,19 @@ paths:
           required: true
           schema:
             type: string
+          description: Account identifier
         - name: from
           in: path
           required: true
           schema:
             type: integer
+          description: Start time of the statement period in Unix time.
         - name: to
           in: path
           required: true
           schema:
             type: integer
+          description: End time of the statement period in Unix time.
       responses:
         '200':
           description: OK
