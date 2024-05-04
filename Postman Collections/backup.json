@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "de5de377-4e0d-47e9-95cb-4e24bb09818a",
 		"name": "Monobank Open API (v2303)",
-		"description": "### API for Accessing Account Statements and Status / API для отримання інформації про виписки та стан особистого рахунку\n\n#### English:\n\nAPI for obtaining information about account statements and the status of personal and sole proprietorship accounts. To gain access, authorization is required in the personal account at [https://api.monobank.ua/](https://api.monobank.ua/), where a token for personal use must be obtained.\n\nIf you have questions about the API, you are invited to join the community in the Telegram group. The API is not available to clients under 16 years of age; information on children's accounts is accessible from the parent's account. If you have a service and want to centrally connect to the API to provide services to clients, you need to connect to the Service Provider API, which offers more capabilities. If client data will not be transmitted to your servers, or you are creating a service for your family, the use of the corporate API is not mandatory. Development of libraries or programs that will be used personally by clients (without client data passing through the developer's nodes) also does not require the use of the corporate API.\n\nThis allows monobank clients to authorize in your service (e.g., a financial manager) to provide information about their account status or statements. If exploitation of this API as a corporate one is detected, the bank reserves the right to impose sanctions on the company.\n\n#### Українська:\n\nAPI для отримання інформації про виписки та стан особистого рахунку та рахунків ФОП. Для надання доступу потрібно пройти авторизацію у особистому кабінеті [https://api.monobank.ua/](https://api.monobank.ua/) та отримати токен для персонального використання.\n\nЯкщо у вас є запитання щодо роботи API, запрошуємо до ком'юніті у Telegram-групі. API недоступне для клієнтів до 16 років, дані за дитячими рахунками доступні з батьківського акаунту. Якщо у вас є сервіс і ви хочете централізовано приєднатися до API для надання послуг клієнтам, потрібно підключитися до API для провайдерів послуг, що має більше можливостей. Якщо дані клієнтів не будуть надходити на ваші сервери або ви робите сервіс для своєї родини, використання корпоративного API необов'язкове. Розробка бібліотек або програм, які будуть використовувати клієнти особисто (дані клієнта не будуть проходити через вузли розробника), також не потребують використання корпоративного API.\n\nЦе надасть змогу клієнтам monobank авторизуватись у вашому сервісі (наприклад, у фінансовому менеджері) для надання інформації про стан рахунку або виписки. У разі виявлення експлуатації цього API в якості корпоративного, банк залишає за собою право накласти санкції на компанію.",
+		"description": "#### English:\n\nAPI for obtaining information about account statements and the status of personal and sole proprietorship accounts. To gain access, authorization is required in the personal account at [https://api.monobank.ua/](https://api.monobank.ua/), where a token for personal use must be obtained.\n\nIf you have questions about the API, you are invited to join the community in the Telegram group. The API is not available to clients under 16 years of age; information on children's accounts is accessible from the parent's account. If you have a service and want to centrally connect to the API to provide services to clients, you need to connect to the Service Provider API, which offers more capabilities. If client data will not be transmitted to your servers, or you are creating a service for your family, the use of the corporate API is not mandatory. Development of libraries or programs that will be used personally by clients (without client data passing through the developer's nodes) also does not require the use of the corporate API.\n\nThis allows monobank clients to authorize in your service (e.g., a financial manager) to provide information about their account status or statements. If exploitation of this API as a corporate one is detected, the bank reserves the right to impose sanctions on the company.\n\n#### Українська:\n\nAPI для отримання інформації про виписки та стан особистого рахунку та рахунків ФОП. Для надання доступу потрібно пройти авторизацію у особистому кабінеті [https://api.monobank.ua/](https://api.monobank.ua/) та отримати токен для персонального використання.\n\nЯкщо у вас є запитання щодо роботи API, запрошуємо до ком'юніті у Telegram-групі. API недоступне для клієнтів до 16 років, дані за дитячими рахунками доступні з батьківського акаунту. Якщо у вас є сервіс і ви хочете централізовано приєднатися до API для надання послуг клієнтам, потрібно підключитися до API для провайдерів послуг, що має більше можливостей. Якщо дані клієнтів не будуть надходити на ваші сервери або ви робите сервіс для своєї родини, використання корпоративного API необов'язкове. Розробка бібліотек або програм, які будуть використовувати клієнти особисто (дані клієнта не будуть проходити через вузли розробника), також не потребують використання корпоративного API.\n\nЦе надасть змогу клієнтам monobank авторизуватись у вашому сервісі (наприклад, у фінансовому менеджері) для надання інформації про стан рахунку або виписки. У разі виявлення експлуатації цього API в якості корпоративного, банк залишає за собою право накласти санкції на компанію.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -105,7 +105,7 @@
 				}
 			],
 			"id": "9107ca03-8836-4393-ba01-60c916b43fac",
-			"description": "### General Information Provided Without Authorization / Загальна інформація, що надається без авторизації\n\n#### English:\nGeneral information that is provided without the need for authorization.\n\n#### Українська:\nЗагальна інформація, що надається без потреби в авторизації.",
+			"description": "#### English:\n\nGeneral information that is provided without the need for authorization.\n\n#### Українська:\n\nЗагальна інформація, що надається без потреби в авторизації.",
 			"auth": {
 				"type": "noauth"
 			},
@@ -362,16 +362,17 @@
 								{
 									"key": "account",
 									"value": "",
-									"description": "Ідентифікатор рахунку або банки з переліків Statement list або 0 - дефолтний рахунок.\n-\nAccount or bank identifier from the Statement list or 0 - default account."
+									"description": "Account identifier from the Statement list or 0 - default account."
 								},
 								{
 									"key": "from",
 									"value": "",
-									"description": "Example: 1546304461\nПочаток часу виписки.\n-\nExample: 1546304461\nThe start of the discharge time."
+									"description": "Date from in Unix time seconds"
 								},
 								{
 									"key": "to",
-									"value": ""
+									"value": "",
+									"description": "Date to in Unix time seconds"
 								}
 							]
 						},
@@ -472,7 +473,7 @@
 				}
 			],
 			"id": "c5876559-6ccf-48f9-a0c6-08c67660c3f7",
-			"description": "### Access Token Required Information / Інформація, що надається тільки за наявності токена доступу\n\n#### English:\nThe information is provided only if an access token is available, which the client can obtain in their personal account at https://api.monobank.ua/.\n\n#### Українська:\nІнформація, що надається тільки за наявності токена доступу, який клієнт може отримати в особистому кабінеті https://api.monobank.ua/."
+			"description": "#### English:\n\nThe information is provided only if an access token is available, which the client can obtain in their personal account at [https://api.monobank.ua/](https://api.monobank.ua/).\n\n#### Українська:\n\nІнформація, що надається тільки за наявності токена доступу, який клієнт може отримати в особистому кабінеті [https://api.monobank.ua/](https://api.monobank.ua/)."
 		}
 	],
 	"event": [
